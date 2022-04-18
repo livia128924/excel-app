@@ -27,6 +27,37 @@
 .App-link {
   color: #61dafb;
 }
+.containerbar{
+  display: flex;
+  margin-top: 10px;
+}
+
+offcanvas-backdrop.show{
+  opacity: 0.1;
+}
+.offcanvas-backdrop.fade {
+  opacity: 0;
+}
+
+
+
+@media (min-width: 992px){
+.sidebar-nav {
+    -webkit-transform: none;
+    transform: none;
+    visibility: visible !important;
+    height: calc(100% - var(--topNavbarHeight));
+    top: var(--topNavbarHeight);
+}
+}
+@media (min-width: 990px){
+  .sidebar-nav {
+  
+      visibility: none;
+
+  }
+  }
+  
 
 @keyframes App-logo-spin {
   from {
