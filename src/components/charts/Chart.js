@@ -1,5 +1,5 @@
 import "./chart.css";
-import React from 'react';
+import React, { useState } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -8,11 +8,11 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
-import { Bar } from 'react-chartjs-2';
-import faker from 'faker';
+} from "chart.js";
+import { Bar } from "react-chartjs-2";
 
-ChartJS.register(
+function Chart(props) {
+  ChartJS.register(
     CategoryScale,
     LinearScale,
     BarElement,
@@ -21,42 +21,50 @@ ChartJS.register(
     Legend
   );
 
-  export const options = {
+  const options = {
     responsive: true,
     plugins: {
       legend: {
-        position: 'top',
+        position: "top",
       },
       title: {
         display: true,
-        text: 'Chart.js Bar Chart',
+        text: "Todas as notas",
       },
     },
   };
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  const labels = [
+    "Adriano",
+    "Bruno",
+    "Carlos",
+    "Daniel",
+    "Flávia",
+    "Gabriel",
+    "Laís",
+  ];
 
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-    },
-    {
-      label: 'Dataset 2',
-      data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
-    },
-  ],
-};
-
-export default function Chart() {
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: "Nota 1",
+        data: props.data.Nota1,
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
+      },
+      {
+        label: "Nota2",
+        data:  props.data.Nota2,
+        backgroundColor: "rgba(53, 162, 235, 0.5)",
+      },
+    ],
+  };
 
   return (
     <div className="chart">
-     <Bar options={options} data={data} />;
+      <Bar options={options} data={data} />
     </div>
   );
 }
+
+export default Chart;
